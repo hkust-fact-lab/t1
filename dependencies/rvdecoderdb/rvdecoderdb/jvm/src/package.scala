@@ -94,7 +94,10 @@ package object rvdecoderdb {
 
   def extractResource(cl: ClassLoader): os.Path = {
     val rvdecoderdbPath = os.temp.dir()
-    val rvdecoderdbTar  = rvdecoderdbPath / "riscv-opcodes.tar"
+    // The tar must NOT live inside rvdecoderdbPath: the custom-resource branch walks
+    // its directory without a name filter, so a stray .tar there would be parsed as an
+    // opcode file (binary "lines" -> no encoding tokens -> empty.reduceLeft crash).
+    val rvdecoderdbTar  = os.temp()
     copyResource(cl, "riscv-opcodes.tar", rvdecoderdbTar)
     os.proc("tar", "xf", rvdecoderdbTar).call(rvdecoderdbPath)
     rvdecoderdbPath
@@ -102,7 +105,7 @@ package object rvdecoderdb {
 
   def extractCustomResource(cl: ClassLoader): os.Path = {
     val rvdecoderdbPath = os.temp.dir()
-    val rvdecoderdbTar  = rvdecoderdbPath / "riscv-custom-opcodes.tar"
+    val rvdecoderdbTar  = os.temp()
     copyResource(cl, "riscv-custom-opcodes.tar", rvdecoderdbTar)
     os.proc("tar", "xf", rvdecoderdbTar).call(rvdecoderdbPath)
     rvdecoderdbPath

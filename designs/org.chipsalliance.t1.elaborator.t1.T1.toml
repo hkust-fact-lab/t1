@@ -151,136 +151,136 @@ cmdopt = "--dLen 256 --extensions zvl256b --extensions zve32x --laneScale 1 --ch
 # the vendored EFMA unit attached to every lane slot.
 [physical_design_case_2_efma]
 cmdopt = "--dLen 128 --extensions zvl512b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rw --vfuInstantiateParameter minimal"
-[physical_design_case_3]
+[physical_design_case_3_efma]
 cmdopt = "--dLen 128 --extensions zvl1024b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rw --vfuInstantiateParameter minimal"
-[physical_design_case_4]
+[physical_design_case_4_efma]
 cmdopt = "--dLen 128 --extensions zvl2048b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rw --vfuInstantiateParameter minimal"
-[physical_design_case_5]
+[physical_design_case_5_efma]
 cmdopt = "--dLen 128 --extensions zvl4096b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rw --vfuInstantiateParameter minimal"
-[physical_design_case_6]
+[physical_design_case_6_efma]
 cmdopt = "--dLen 128 --extensions zvl8192b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rw --vfuInstantiateParameter minimal"
-[physical_design_case_7]
+[physical_design_case_7_efma]
 cmdopt = "--dLen 128 --extensions zvl16384b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rw --vfuInstantiateParameter minimal"
-[physical_design_case_8]
+[physical_design_case_8_efma]
 cmdopt = "--dLen 128 --extensions zvl32768b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rw --vfuInstantiateParameter minimal"
-[physical_design_case_9]
+[physical_design_case_9_efma]
 cmdopt = "--dLen 128 --extensions zvl65536b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rw --vfuInstantiateParameter minimal"
 ## 4 8 16 32 Lanes floorplan and extra size by Permutation Unit
-[physical_design_case_10]
+[physical_design_case_10_efma]
 cmdopt = "--dLen 128 --extensions zvl2048b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rw --vfuInstantiateParameter minimal"
-[physical_design_case_11]
+[physical_design_case_11_efma]
 cmdopt = "--dLen 256 --extensions zvl2048b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rw --vfuInstantiateParameter minimal"
-[physical_design_case_12]
+[physical_design_case_12_efma]
 cmdopt = "--dLen 512 --extensions zvl2048b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rw --vfuInstantiateParameter minimal"
-[physical_design_case_13]
+[physical_design_case_13_efma]
 cmdopt = "--dLen 1024 --extensions zvl2048b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rw --vfuInstantiateParameter minimal"
 ## Lane with different VRF bank size
-[physical_design_case_14]
+[physical_design_case_14_efma]
 cmdopt = "--dLen 128 --extensions zvl4096b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 1 --vrfRamType p0rw --vfuInstantiateParameter small"
-[physical_design_case_15]
+[physical_design_case_15_efma]
 cmdopt = "--dLen 128 --extensions zvl4096b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 2 --vrfRamType p0rw --vfuInstantiateParameter small"
-[physical_design_case_16]
+[physical_design_case_16_efma]
 cmdopt = "--dLen 128 --extensions zvl4096b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rw --vfuInstantiateParameter small"
-[physical_design_case_17]
+[physical_design_case_17_efma]
 cmdopt = "--dLen 128 --extensions zvl4096b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 8 --vrfRamType p0rw --vfuInstantiateParameter small"
-[physical_design_case_18]
+[physical_design_case_18_efma]
 cmdopt = "--dLen 128 --extensions zvl4096b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 16 --vrfRamType p0rw --vfuInstantiateParameter small"
 ## Lane with different VRF RAM Type
-[physical_design_case_19]
+[physical_design_case_19_efma]
 cmdopt = "--dLen 128 --extensions zvl4096b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rw --vfuInstantiateParameter small"
-[physical_design_case_20]
+[physical_design_case_20_efma]
 cmdopt = "--dLen 128 --extensions zvl4096b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rp1w --vfuInstantiateParameter small"
-[physical_design_case_21]
+[physical_design_case_21_efma]
 cmdopt = "--dLen 128 --extensions zvl4096b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rwp1rw --vfuInstantiateParameter small"
 ## Lane with different VFU
-[physical_design_case_22]
+[physical_design_case_22_efma]
 cmdopt = "--dLen 128 --extensions zvl512b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 1 --vrfRamType p0rw --vfuInstantiateParameter minimal"
-[physical_design_case_23]
+[physical_design_case_23_efma]
 cmdopt = "--dLen 128 --extensions zvl512b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 1 --vrfRamType p0rw --vfuInstantiateParameter small"
-[physical_design_case_24]
+[physical_design_case_24_efma]
 cmdopt = "--dLen 128 --extensions zvl512b --extensions zve32f --laneScale 1 --chainingSize 4 --vrfBankSize 1 --vrfRamType p0rw --vfuInstantiateParameter minimal"
-[physical_design_case_25]
+[physical_design_case_25_efma]
 cmdopt = "--dLen 128 --extensions zvl512b --extensions zve32f --laneScale 1 --chainingSize 4 --vrfBankSize 1 --vrfRamType p0rw --vfuInstantiateParameter small"
-[physical_design_case_26]
+[physical_design_case_26_efma]
 cmdopt = "--dLen 128 --extensions zvl512b --extensions zve32f --laneScale 1 --chainingSize 4 --vrfBankSize 1 --vrfRamType p0rw --vfuInstantiateParameter medium"
-[physical_design_case_27]
+[physical_design_case_27_efma]
 cmdopt = "--dLen 128 --extensions zvl512b --extensions zve32f --laneScale 1 --chainingSize 4 --vrfBankSize 1 --vrfRamType p0rw --vfuInstantiateParameter large"
-[physical_design_case_28]
+[physical_design_case_28_efma]
 cmdopt = "--dLen 128 --extensions zvl512b --extensions zve32f --laneScale 1 --chainingSize 4 --vrfBankSize 1 --vrfRamType p0rw --vfuInstantiateParameter huge"
 
-[benchmark_dlen128_vlen128]
+[benchmark_dlen128_vlen128_efma]
 cmdopt = "--dLen 128 --extensions zvl128b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 1 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen128_vlen256]
+[benchmark_dlen128_vlen256_efma]
 cmdopt = "--dLen 128 --extensions zvl256b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 2 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen128_vlen512]
+[benchmark_dlen128_vlen512_efma]
 cmdopt = "--dLen 128 --extensions zvl512b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen128_vlen1024]
+[benchmark_dlen128_vlen1024_efma]
 cmdopt = "--dLen 128 --extensions zvl1024b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 8 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen128_vlen2048]
+[benchmark_dlen128_vlen2048_efma]
 cmdopt = "--dLen 128 --extensions zvl2048b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 16 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen128_vlen4096]
+[benchmark_dlen128_vlen4096_efma]
 cmdopt = "--dLen 128 --extensions zvl4096b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 32 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen256_vlen256]
+[benchmark_dlen256_vlen256_efma]
 cmdopt = "--dLen 256 --extensions zvl256b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 1 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen256_vlen512]
+[benchmark_dlen256_vlen512_efma]
 cmdopt = "--dLen 256 --extensions zvl512b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 2 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen256_vlen1024]
+[benchmark_dlen256_vlen1024_efma]
 cmdopt = "--dLen 256 --extensions zvl1024b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen256_vlen2048]
+[benchmark_dlen256_vlen2048_efma]
 cmdopt = "--dLen 256 --extensions zvl2048b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 8 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen256_vlen4096]
+[benchmark_dlen256_vlen4096_efma]
 cmdopt = "--dLen 256 --extensions zvl4096b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 16 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen512_vlen512]
+[benchmark_dlen512_vlen512_efma]
 cmdopt = "--dLen 512 --extensions zvl512b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 1 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen512_vlen1024]
+[benchmark_dlen512_vlen1024_efma]
 cmdopt = "--dLen 512 --extensions zvl1024b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 2 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen512_vlen2048]
+[benchmark_dlen512_vlen2048_efma]
 cmdopt = "--dLen 512 --extensions zvl2048b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen512_vlen4096]
+[benchmark_dlen512_vlen4096_efma]
 cmdopt = "--dLen 512 --extensions zvl4096b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 8 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen1024_vlen1024]
+[benchmark_dlen1024_vlen1024_efma]
 cmdopt = "--dLen 1024 --extensions zvl1024b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 1 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen1024_vlen2048]
+[benchmark_dlen1024_vlen2048_efma]
 cmdopt = "--dLen 1024 --extensions zvl2048b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 2 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen1024_vlen4096]
+[benchmark_dlen1024_vlen4096_efma]
 cmdopt = "--dLen 1024 --extensions zvl4096b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen128_vlen128_fp]
+[benchmark_dlen128_vlen128_fp_efma]
 cmdopt = "--dLen 128 --extensions zvl128b --extensions zve32f --laneScale 1 --chainingSize 4 --vrfBankSize 1 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen128_vlen256_fp]
+[benchmark_dlen128_vlen256_fp_efma]
 cmdopt = "--dLen 128 --extensions zvl256b --extensions zve32f --laneScale 1 --chainingSize 4 --vrfBankSize 2 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen128_vlen512_fp]
+[benchmark_dlen128_vlen512_fp_efma]
 cmdopt = "--dLen 128 --extensions zvl512b --extensions zve32f --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen128_vlen1024_fp]
+[benchmark_dlen128_vlen1024_fp_efma]
 cmdopt = "--dLen 128 --extensions zvl1024b --extensions zve32f --laneScale 1 --chainingSize 4 --vrfBankSize 8 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen128_vlen2048_fp]
+[benchmark_dlen128_vlen2048_fp_efma]
 cmdopt = "--dLen 128 --extensions zvl2048b --extensions zve32f --laneScale 1 --chainingSize 4 --vrfBankSize 16 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen128_vlen4096_fp]
+[benchmark_dlen128_vlen4096_fp_efma]
 cmdopt = "--dLen 128 --extensions zvl4096b --extensions zve32f --laneScale 1 --chainingSize 4 --vrfBankSize 32 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen256_vlen256_fp]
+[benchmark_dlen256_vlen256_fp_efma]
 cmdopt = "--dLen 256 --extensions zvl256b --extensions zve32f --laneScale 1 --chainingSize 4 --vrfBankSize 1 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen256_vlen512_fp]
+[benchmark_dlen256_vlen512_fp_efma]
 cmdopt = "--dLen 256 --extensions zvl512b --extensions zve32f --laneScale 1 --chainingSize 4 --vrfBankSize 2 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen256_vlen1024_fp]
+[benchmark_dlen256_vlen1024_fp_efma]
 cmdopt = "--dLen 256 --extensions zvl1024b --extensions zve32f --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen256_vlen2048_fp]
+[benchmark_dlen256_vlen2048_fp_efma]
 cmdopt = "--dLen 256 --extensions zvl2048b --extensions zve32f --laneScale 1 --chainingSize 4 --vrfBankSize 8 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen256_vlen4096_fp]
+[benchmark_dlen256_vlen4096_fp_efma]
 cmdopt = "--dLen 256 --extensions zvl4096b --extensions zve32f --laneScale 1 --chainingSize 4 --vrfBankSize 16 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen512_vlen512_fp]
+[benchmark_dlen512_vlen512_fp_efma]
 cmdopt = "--dLen 512 --extensions zvl512b --extensions zve32f --laneScale 1 --chainingSize 4 --vrfBankSize 1 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen512_vlen1024_fp]
+[benchmark_dlen512_vlen1024_fp_efma]
 cmdopt = "--dLen 512 --extensions zvl1024b --extensions zve32f --laneScale 1 --chainingSize 4 --vrfBankSize 2 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen512_vlen2048_fp]
+[benchmark_dlen512_vlen2048_fp_efma]
 cmdopt = "--dLen 512 --extensions zvl2048b --extensions zve32f --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen512_vlen4096_fp]
+[benchmark_dlen512_vlen4096_fp_efma]
 cmdopt = "--dLen 512 --extensions zvl4096b --extensions zve32f --laneScale 1 --chainingSize 4 --vrfBankSize 8 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen1024_vlen1024_fp]
+[benchmark_dlen1024_vlen1024_fp_efma]
 cmdopt = "--dLen 1024 --extensions zvl1024b --extensions zve32f --laneScale 1 --chainingSize 4 --vrfBankSize 1 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen1024_vlen2048_fp]
+[benchmark_dlen1024_vlen2048_fp_efma]
 cmdopt = "--dLen 1024 --extensions zvl2048b --extensions zve32f --laneScale 1 --chainingSize 4 --vrfBankSize 2 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
-[benchmark_dlen1024_vlen4096_fp]
+[benchmark_dlen1024_vlen4096_fp_efma]
 cmdopt = "--dLen 1024 --extensions zvl4096b --extensions zve32f --laneScale 1 --chainingSize 4 --vrfBankSize 4 --vrfRamType p0rwp1rw --vfuInstantiateParameter huge"
 # Experimental(only for elaboration)
-[experimental_0]
+[experimental_0_efma]
 cmdopt = "--dLen 256 --extensions zvl256b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --extensions zvbb --vrfBankSize 1 --vrfRamType p0rwp1rw --vfuInstantiateParameter zvbb"
 
