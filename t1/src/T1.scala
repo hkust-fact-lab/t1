@@ -179,6 +179,7 @@ case class T1Parameter(
           case "rv_v"                                                   => true
           case s"rv_xsfmm${tew}t" if Seq(16, 32, 64, 128).contains(tew) => useXsfmm
           case "rv_zvbb"                                                => if (zvbbEnable) true else false
+          case "rv_xefma"                                               => efmaEnable
           case _                                                        => false
         }
       }
@@ -193,7 +194,7 @@ case class T1Parameter(
     extensions.forall(
       (Seq("zve32x", "zve32f", "zvbb") ++
         Seq(128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536).map(vlen => s"zvl${vlen}b") ++
-        Seq(16, 32, 64, 128).map(tew => s"rv_xsfmm${tew}t")).contains
+        Seq(16, 32, 64, 128).map(tew => s"rv_xsfmm${tew}t") ++ Seq("rv_xefma")).contains
     ),
     "unsupported extension."
   )
@@ -298,6 +299,7 @@ case class T1Parameter(
   val releaseShifterSize: Seq[Int] = Seq.tabulate(laneNumber)(_ => 1)
 
   def useXsfmm: Boolean     = extensions.exists(ext => ext.startsWith("rv_xsfmm"))
+  def efmaEnable: Boolean   = extensions.exists(ext => ext.startsWith("rv_xefma"))
   val tew:      Option[Int] = extensions.collectFirst { case s"rv_xsfmm${tew}t" => tew.toInt }
   val TE:       Int         = if (useXsfmm) {
     // force panic when zvma is enable but no TEW was parsed
@@ -306,7 +308,7 @@ case class T1Parameter(
     0
   }
 
-  val decoderParam: DecoderParam = DecoderParam(fpuEnable, zvbbEnable, useXsfmm, allInstructions)
+  val decoderParam: DecoderParam = DecoderParam(fpuEnable, zvbbEnable, useXsfmm, allInstructions, efmaEnable)
 
   val chaining1HBits: Int = 2 << log2Ceil(chainingSize)
 

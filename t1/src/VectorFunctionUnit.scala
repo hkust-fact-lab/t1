@@ -130,6 +130,19 @@ object VFUInstantiateParameter {
     }
   }
 
+  /** EFMA fork: attach one LaneEfma per slot when the `rv_xefma` extension is on. */
+  def withEfma(enabled: Boolean, p: VFUInstantiateParameter): VFUInstantiateParameter =
+    if (!enabled) p
+    else
+      p.copy(efmaModuleParameters =
+        Seq(
+          (
+            SerializableModuleGenerator(classOf[LaneEfmaVFU], LaneEfmaParam(32, 6)),
+            Seq.tabulate(p.slotCount) { i => i }
+          )
+        )
+      )
+
   // instantiate each module and connect to all scoreboards
   def minimalFP(vLen: Int, dLen: Int, requestSourceSize: Int, laneScale: Int) = VFUInstantiateParameter(
     slotCount = requestSourceSize,
@@ -610,7 +623,8 @@ case class VFUInstantiateParameter(
   divfpModuleParameters:   Seq[(SerializableModuleGenerator[LaneDivFP, LaneDivFPParam], Seq[Int])],
   otherModuleParameters:   Seq[(SerializableModuleGenerator[OtherUnit, OtherUnitParam], Seq[Int])],
   floatModuleParameters:   Seq[(SerializableModuleGenerator[LaneFloat, LaneFloatParam], Seq[Int])],
-  zvbbModuleParameters: Seq[(SerializableModuleGenerator[LaneZvbbVFU, LaneZvbbParam], Seq[Int])]) {
+  zvbbModuleParameters: Seq[(SerializableModuleGenerator[LaneZvbbVFU, LaneZvbbParam], Seq[Int])],
+  efmaModuleParameters: Seq[(SerializableModuleGenerator[LaneEfmaVFU, LaneEfmaParam], Seq[Int])] = Seq()) {
   val genVec =
     logicModuleParameters ++
       aluModuleParameters ++
@@ -620,7 +634,8 @@ case class VFUInstantiateParameter(
       divfpModuleParameters ++
       otherModuleParameters ++
       floatModuleParameters ++
-      zvbbModuleParameters
+      zvbbModuleParameters ++
+      efmaModuleParameters
   genVec.foreach { case (_, connect) =>
     connect.foreach(connectIndex => require(connectIndex < slotCount))
   }

@@ -67,16 +67,43 @@ package object rvdecoderdb {
         .toMap
     )
 
+  /** Copy a classpath resource to a real file.
+
+    *
+
+    * `os.resource` only yields a usable path when the classpath entry is a directory;
+
+    * when the elaborator runs from a jar (nix `share/java/elaborator.jar`) it cannot be
+
+    * read that way, so read the bytes through the stream instead.
+
+    */
+
+  private def copyResource(cl: ClassLoader, name: String, dest: os.Path): Unit = {
+
+    val is = cl.getResourceAsStream(name)
+
+    require(is != null, s"classpath resource not found: $name")
+
+    try os.write.over(dest, is.readAllBytes())
+
+    finally is.close()
+
+  }
+
+
   def extractResource(cl: ClassLoader): os.Path = {
     val rvdecoderdbPath = os.temp.dir()
-    val rvdecoderdbTar  = os.temp(os.read(os.resource(cl) / "riscv-opcodes.tar"))
+    val rvdecoderdbTar  = rvdecoderdbPath / "riscv-opcodes.tar"
+    copyResource(cl, "riscv-opcodes.tar", rvdecoderdbTar)
     os.proc("tar", "xf", rvdecoderdbTar).call(rvdecoderdbPath)
     rvdecoderdbPath
   }
 
   def extractCustomResource(cl: ClassLoader): os.Path = {
     val rvdecoderdbPath = os.temp.dir()
-    val rvdecoderdbTar  = os.temp(os.read(os.resource(cl) / "riscv-custom-opcodes.tar"))
+    val rvdecoderdbTar  = rvdecoderdbPath / "riscv-custom-opcodes.tar"
+    copyResource(cl, "riscv-custom-opcodes.tar", rvdecoderdbTar)
     os.proc("tar", "xf", rvdecoderdbTar).call(rvdecoderdbPath)
     rvdecoderdbPath
   }

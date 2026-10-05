@@ -500,7 +500,8 @@ package object rtl {
       inputDecode(Decoder.multiplier),
       inputDecode(Decoder.divider),
       inputDecode(Decoder.other)
-    ) ++ Option.when(parameter.fpuEnable)(inputDecode(Decoder.float))
+    ) ++ Option.when(parameter.fpuEnable)(inputDecode(Decoder.float)) ++
+      Seq(inputDecode(Decoder.efma))
     VecInit(executeList).asUInt
   }
 

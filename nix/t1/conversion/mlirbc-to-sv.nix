@@ -16,7 +16,7 @@ assert lib.assertMsg (builtins.typeOf enableLayers == "list") "enableLayers is n
 
 let
   enabledLayersDirs =
-    enableLayers |> lib.map (str: "./" + lib.replaceStrings [ "." ] [ "/" ] (lib.toLower str));
+    lib.map (str: "./" + lib.replaceStrings [ "." ] [ "/" ] (lib.toLower str)) enableLayers;
 in
 stdenvNoCC.mkDerivation {
   name = outputName;

@@ -58,14 +58,17 @@ object T1 extends SerializableModuleElaborator {
         chainingSize,
         vrfBankSize,
         vrfRamType,
-        VFUInstantiateParameter.parse(
-          vLen = vLen,
-          dLen = dLen,
-          preset = vfuInstantiateParameter,
-          fp = fp,
-          zvbb = zvbb,
-          chainingSize = chainingSize,
-          laneScale = laneScale
+        VFUInstantiateParameter.withEfma(
+          extensions.contains("rv_xefma"),
+          VFUInstantiateParameter.parse(
+            vLen = vLen,
+            dLen = dLen,
+            preset = vfuInstantiateParameter,
+            fp = fp,
+            zvbb = zvbb,
+            chainingSize = chainingSize,
+            laneScale = laneScale
+          )
         ),
         matrixAluRowSize,
         matrixAluColSize

@@ -1,0 +1,4 @@
+# Wukong EFMA fork: nonlinear exp(vs2)*vs1 executed by the EFMA datapath.
+# Encoding matches the wukong_rvv backend: OPIVV (funct3=000), funct6=000001,
+# i.e. the same VEML slot the coralnpu fork decodes unconditionally.
+veml.vv      31..26=0x01 25=0 vs2 vs1 14..12=0 vd 6..0=0x57
