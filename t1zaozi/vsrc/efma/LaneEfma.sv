@@ -15,6 +15,13 @@
 //   gamma' = 0, mode = 0 (E-mode / exp), sign_passthru = 1, c = 0
 //   => y = exp(vs2) * vs1
 //
+// Operand mapping (this is the part that is easy to get backwards): the T1 lane
+// fills `src(0)` from the instruction's *vs1* field and `src(1)` from *vs2*
+// (LaneStage1: `src := (vs1 read, vs2 read, vd read)`), so
+//   src_0 = vs1 = multiplier -> nl.b,      src_1 = vs2 = exponent -> nl.a,
+// exactly as wukong_rvv's rvv_backend_eml.sv drives the same IP
+// (`.a(vs2_data)`, `.b(vs1_data)`).
+//
 // Timing: T1 assumes a *fixed* latency (`connectDecoupledWithShifter(latency)`)
 // and VectorFunctionUnit.scala declares LaneEfmaParam(32, 6), so the response
 // must be valid exactly 6 cycles after the accepting edge of requestIO:
@@ -29,8 +36,8 @@ module LaneEfma (
   output logic        requestIO_ready,
   input  logic        requestIO_valid,
   input  logic [3:0]  requestIO_bits_tag,
-  input  logic [31:0] requestIO_bits_src_0,    // vs2
-  input  logic [31:0] requestIO_bits_src_1,    // vs1
+  input  logic [31:0] requestIO_bits_src_0,    // vs1: multiplier operand -> nl.b
+  input  logic [31:0] requestIO_bits_src_1,    // vs2: exponent operand  -> nl.a
   input  logic [3:0]  requestIO_bits_opcode,
   input  logic [3:0]  requestIO_bits_mask,
   input  logic        responseIO_ready,
@@ -55,7 +62,7 @@ module LaneEfma (
 
   logic        busy;             // request accepted / IP in flight / response pending
   logic        launch_d;         // one-cycle in_valid pulse, issued at T+1
-  logic [31:0] src0_q, src1_q;   // sources captured at the accepting edge
+  logic [31:0] src0_q, src1_q;   // captured at the accepting edge: src0_q = vs1, src1_q = vs2
   logic [3:0]  tag_q;
 
   assign requestIO_ready = ~busy;
@@ -67,8 +74,8 @@ module LaneEfma (
   nl_nonlinear #(.FMT(1)) u_efma (
     .clk       (clock),
     .rst_n     (~reset),
-    .a         (src0_q),        // vs2
-    .b         (src1_q),        // vs1
+    .a         (src1_q),        // vs2: exponent operand (alpha' * vs2)
+    .b         (src0_q),        // vs1: multiplier      (beta * log2(vs1))
     .c         (32'h0),         // VEML has no additive term
     .cfg       (cfg),
     .in_valid  (launch_d),

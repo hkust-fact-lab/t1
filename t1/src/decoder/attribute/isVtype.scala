@@ -28,6 +28,8 @@ object isVtype {
       "vcpop.m",
       "vdiv.vv",
       "vdivu.vv",
+      // rv_xefma: src1 (instruction bits 19..15) is the vector multiplier operand
+      "veml.vv",
       "vfadd.vv",
       "vfclass.v",
       "vfcvt.f.x.v",

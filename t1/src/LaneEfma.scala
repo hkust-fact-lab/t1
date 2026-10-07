@@ -31,6 +31,10 @@ case class LaneEfmaParam(datapathWidth: Int, latency: Int) extends VFUParameter 
 }
 
 class LaneEfmaRequest(datapathWidth: Int) extends VFUPipeBundle {
+  /** `src(0)` is the vs1 read (multiplier, drives `nl.b`) and `src(1)` is the vs2 read
+    * (exponent operand, drives `nl.a`): the T1 lane builds `src` as (vs1, vs2, vd), and
+    * `isVtype`/`Decoder.vtype` is what makes the lane read vs1 into `src(0)` at all.
+    */
   val src:    Vec[UInt] = Vec(2, UInt(datapathWidth.W))
   val opcode: UInt      = UInt(4.W)
   val mask:   UInt      = UInt((datapathWidth / 8).W)
