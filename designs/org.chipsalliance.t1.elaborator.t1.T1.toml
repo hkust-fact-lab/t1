@@ -284,3 +284,25 @@ cmdopt = "--dLen 1024 --extensions zvl4096b --extensions zve32f --laneScale 1 --
 [experimental_0_efma]
 cmdopt = "--dLen 256 --extensions zvl256b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --extensions zvbb --vrfBankSize 1 --vrfRamType p0rwp1rw --vfuInstantiateParameter zvbb"
 
+
+# --- added 2026-10-06: DLEN=512 / VLEN=512 variants (baseline + EFMA).
+# Only DLEN differs from physical_design_case_2[_efma]; laneNumber = dLen/32
+# goes 4 -> 16, so --vrfBankSize is set to 1 to keep the VRF RAM geometry
+# identical (rowWidth = datapathWidth*portFactor = 32, rfDepth = 32 => sixteen
+# 32x32 macros, same as case_2).  Matches the upstream benchmark_* convention
+# vrfBankSize = vLen/dLen.
+[physical_design_case_2_dlen512]
+cmdopt = "--dLen 512 --extensions zvl512b --extensions zve32x --laneScale 1 --chainingSize 4 --vrfBankSize 1 --vrfRamType p0rw --vfuInstantiateParameter minimal"
+
+[physical_design_case_2_dlen512_efma]
+cmdopt = "--dLen 512 --extensions zvl512b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 1 --vrfRamType p0rw --vfuInstantiateParameter minimal"
+
+# --- added 2026-10-07: CVA6-hosted tile: VLEN=1024, DLEN=512 (= 16 lanes x 32),
+# RVV backend with the EFMA nonlinear unit per lane, plus the no-EFMA twin for
+# A/B.  vrfBankSize = vLen/dLen = 2 keeps the VRF RAM geometry at depth 32
+# (ramWidth = datapathWidth = 32), i.e. 2 x 32x36 per lane x 16 lanes = 32 macros.
+[cva6_tile_vlen1024_dlen512]
+cmdopt = "--dLen 512 --extensions zvl1024b --extensions zve32x --laneScale 1 --chainingSize 4 --vrfBankSize 2 --vrfRamType p0rw --vfuInstantiateParameter minimal"
+
+[cva6_tile_vlen1024_dlen512_efma]
+cmdopt = "--dLen 512 --extensions zvl1024b --extensions zve32x --extensions rv_xefma --laneScale 1 --chainingSize 4 --vrfBankSize 2 --vrfRamType p0rw --vfuInstantiateParameter minimal"

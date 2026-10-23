@@ -649,6 +649,18 @@ class T1Retire(xLen: Int) extends Bundle {
   val rd:  ValidIO[T1RdRetire]  = Valid(new T1RdRetire(xLen))
   val csr: ValidIO[T1CSRRetire] = Valid(new T1CSRRetire)
   val mem: ValidIO[EmptyBundle] = Valid(new EmptyBundle)
+
+  /** One-cycle pulse: the instruction that was pending is done (its last slot
+    * committed, i.e. `lastSlotCommit` in [[T1]]).
+    *
+    * `rd`, `csr` and `mem` are *sparse*: `rd` fires only for instructions with a
+    * scalar destination, `mem` only for loads/stores, `csr` is not driven yet.
+    * A scalar core that has to acknowledge *every* vector instruction -- the
+    * CV-X-IF handshake in the CVA6 tile, or any host that tracks completion per
+    * instruction -- needs this dense counterpart, so it is exported rather than
+    * inferred from the sparse events.
+    */
+  val instDone: Bool = Bool()
 }
 
 class MaskUnitReadState(parameter: T1Parameter) extends Bundle {

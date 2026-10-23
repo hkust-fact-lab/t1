@@ -1294,6 +1294,10 @@ class T1(val parameter: T1Parameter)
     io.retire.csr.valid      := false.B
     io.retire.mem.valid      := (slotCommit.asUInt & VecInit(slots.map(_.record.isLoadStore)).asUInt).orR
     lastSlotCommit           := slotCommit.last
+    // Dense completion event, see T1Retire.instDone: `rd`/`mem` above are
+    // sparse (scalar-destination / load-store only), this one fires for every
+    // instruction in commit order.
+    io.retire.instDone       := lastSlotCommit
   }
 
   layer.block(layers.Verification) {

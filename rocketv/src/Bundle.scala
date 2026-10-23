@@ -1616,4 +1616,12 @@ class T1Retire(xLen: Int) extends Bundle {
   val rd:  Valid[T1RdRetire]  = Valid(new T1RdRetire(xLen))
   val csr: Valid[T1CSRRetire] = Valid(new T1CSRRetire)
   val mem: Valid[Bundle]      = Valid(new Bundle {})
+
+  /** Mirror of `T1Retire.instDone` in `t1/src/Bundles.scala`: dense per-instruction
+    * completion pulse (the T1 `retire.rd`/`retire.mem` events are sparse).  The
+    * Rocket core does not consume it; it exists so the two T1Retire definitions
+    * stay field-for-field identical, which is what lets `rocket.io.t1.get.retire`
+    * be bulk-connected from `T1.io.retire`.
+    */
+  val instDone: Bool = Bool()
 }
